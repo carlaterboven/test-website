@@ -298,31 +298,3 @@ main.scroll .project:nth-child(4n + 4) .thumbnail .thumb{
 .custom-checkbox input:checked + .checkbox-mark::before {
     content: "[X]";
 }
-
-
-
-
-
-#mobile-warning {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #c62828;
-  color: white;
-  padding: 1em;
-  text-align: center;
-  font-weight: bold;
-  z-index: 9999;
-}
-
-@media screen and (max-width: 600px) {
-  #mobile-warning {
-    display: block;
-  }
-
-  body > *:not(#mobile-warning) {
-    display: none !important;
-  }
-}
