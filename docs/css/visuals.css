@@ -1,0 +1,111 @@
+/* Visuals Section */
+section.visuals {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.visuals h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Großes Bild oben */
+.visuals-main {
+    text-align: center; /* Bild zentrieren */
+    margin-bottom: 30px;
+}
+
+.main-image {
+    max-width: 100%; /* Bild passt sich der Containerbreite an */
+    height: auto; /* Proportional skalieren */
+}
+
+/* Galerie mit flexiblem Grid */
+.visuals-gallery,
+.drawings-gallery {
+    display: grid;
+    gap: 100px; /* Abstand zwischen Bildern */
+}
+
+/* Standardlayout: 2 Spalten */
+.grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Layout für 5 Spalten */
+.grid-5-cols {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+/* 5 Spalten: Für größere Bildschirme (z. B. Desktop im Vollbild) */
+@media (min-width: 1200px) {
+    .visuals-gallery,
+    .drawings-gallery {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+/* 4 Spalten: Für größere Bildschirme (z. B. Desktop im Vollbild) */
+@media (min-width: 950px) and (max-width: 1199px) {
+    .visuals-gallery,
+    .drawings-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 3 Spalten: Für mittlere Bildschirme (z. B. Tablets, kleine Laptops) */
+@media (min-width: 768px) and (max-width: 950px) {
+    .visuals-gallery,
+    .drawings-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 2 Spalten: Für kleine Bildschirme (z. B. größere Smartphones) */
+@media (max-width: 767px) {
+    .visuals-gallery,
+    .drawings-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 1 Spalte: Für sehr kleine Bildschirme (z. B. ältere Smartphones) */
+@media (max-width: 480px) {
+    .visuals-gallery,
+    .drawings-gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* =========================================================
+   Quadratische Darstellung mit Weißrand bei kleineren Bildern
+   ========================================================= */
+.gallery-item img,
+.drawing-gallery-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;        /* quadratische Kacheln */
+    object-fit: contain;        /* Bild wird vollständig gezeigt */
+    background-color: #fff;     /* weißer Hintergrund füllt freien Raum */
+    border: 1px solid #eee;     /* dezente Kontur */
+    border-radius: 4px;         /* optionale abgerundete Ecken */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img:hover,
+.drawing-gallery-item img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Drawings Section */
+section.drawings {
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.drawings h2 {
+    margin-bottom: 20px;
+    color: #333;
+}

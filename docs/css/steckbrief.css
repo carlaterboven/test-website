@@ -1,0 +1,89 @@
+/* ========================================
+   STECKBRIEF – Grundlayout
+======================================== */
+section.steckbrief {
+  background-color: #f8f8f8;
+  padding: 20px;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+section.steckbrief .row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: start;
+  gap: 10px;
+}
+
+section.steckbrief .label {
+  font-weight: bold;
+  white-space: nowrap;
+  color: #333;
+}
+
+section.steckbrief .value {
+  color: #555;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 600px) {
+  section.steckbrief .row {
+    grid-template-columns: 1fr;
+  }
+  section.steckbrief .label {
+    margin-bottom: 2px;
+  }
+}
+
+/* ========================================
+   TEXTBEREICH MIT [more]/[less]
+======================================== */
+section.text {
+  background-color: #f8f8f8;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  line-height: 1.5;
+}
+
+/* Details-Elemente */
+section.text details > summary {
+  list-style: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+section.text details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* [more]/[less]-Text */
+section.text details > summary::after {
+  content: " [more]";
+  font-weight: 700;
+  white-space: nowrap;
+}
+section.text details[open] > summary::after {
+  content: " [less]";
+  font-weight: 700;
+}
+
+section.text details > p {
+  margin-top: 0;
+}
+section.text details > *:not(summary):first-child {
+  margin-top: 0;
+}

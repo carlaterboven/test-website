@@ -1,0 +1,74 @@
+
+
+/* Navigationsleiste auf mittlerer Höhe des Bildes */
+.next-navbar {
+    position: absolute;
+    top: 50%; /* Vertikal zentrieren */
+    left: 0; /* Start von der linken Seite */
+    width: 100%; /* Breite der Navbar über das gesamte Bild */
+    display: flex;
+    justify-content: space-between; /* Elemente links und rechts ausrichten */
+    align-items: center; /* Vertikal zentrieren */
+    transform: translateY(-50%); /* Um genau in der Mitte des Bildes zu sein */
+    background: none; /* Keine Hintergrundfarbe */
+    border: none; /* Kein Rahmen */
+}
+
+/* Links für Minus und Plus */
+.next-links, .next-rechts {
+    background: none; /* Kein Hintergrund */
+    border: none; /* Kein Rahmen */
+    padding: 0; /* Kein Padding */
+}
+
+/* Links für Minus und Plus */
+.next-links {
+    margin-left: 20px; /* 20px Abstand von der linken Seite */
+}
+
+.next-rechts {
+    margin-right: 20px; /* 20px Abstand von der rechten Seite */
+}
+
+/* Stil für die Links */
+.next-links a, .next-rechts a {
+    font-size: 40px; /* Größere Schriftgröße */
+    font-weight: lighter; /* Sehr dünnes Gewicht */
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    background: none; /* Kein Hintergrund */
+    border: none; /* Kein Rahmen */
+}
+
+/* Hover-Effekt */
+.next-links a:hover, .next-rechts a:hover {
+    color: #007BFF;
+}
+
+/* Container für das Bild und die Navigation */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Bild soll den gesamten Bildschirm ausfüllen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Verändert die Anordnung von Bild und Titel, vertikal */
+}
+
+/* Bild wird skaliert, ohne das Seitenverhältnis zu verlieren */
+.large-image {
+    width: 75%; /* Reduziere die Breite */
+    height: auto; /* Behalte das Seitenverhältnis */
+    object-fit: contain;
+}
+
+/* Titel unter dem Bild zentrieren */
+.image-title {
+    margin-top: 0px; /* Abstand zum Bild */
+    font-size: 18px;
+    color: black;
+    text-align: center; /* Zentriert den Text */
+    text-decoration: none; /* Entfernt die Unterstreichung des Links */
+}

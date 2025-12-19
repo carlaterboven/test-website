@@ -1,0 +1,94 @@
+/* Hauptbox für Inhalte */
+section.mtcontent {
+    background-color: #f8f8f8; /* Weißer Hintergrund für die gesamte Box */
+    padding: 40px; /* Innenabstand zur weißen Box */
+    margin: 0; /* Kein externer Abstand */
+    border: none; /* Keine Umrandung */
+    box-shadow: none; /* Kein Schatten */
+    margin-top: 20px; /* Abstand nach oben (zwischen Navbar und Content) */
+}
+
+/* Projekt-Container */
+.mtproject {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Zwei Spalten */
+    gap: 100px; /* Abstand zwischen den Spalten */
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Einzelnes Projekt */
+.mtproject-item {
+    position: relative; /* Beibehalten der relativen Positionierung für den Container */
+    width: 100%; /* Nimmt die volle Breite einer Spalte ein */
+    text-align: center; /* Zentriert den Text */
+    box-sizing: border-box; /* Bezieht Padding und Border in die Breitenberechnung ein */
+    margin-bottom: 50px; /* Abstand zwischen den Projekt-Items */
+    height: auto; /* Automatische Höhe für flexibles Layout */
+}
+
+.mtproject-number {
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    position: static; /* statt absolute */
+    display: inline-block; /* nebeneinander mit Titel */
+    margin-right: 8px; /* Abstand zum Titel */
+    vertical-align: middle; /* saubere Ausrichtung */
+}
+
+.mtproject-title {
+    opacity: 1; /* Immer sichtbar */
+    display: inline-block; /* nebeneinander mit Nummer */
+    vertical-align: middle;
+}
+
+/* Projektbeschreibung */
+.mtproject-description {
+    color: black; /* Immer schwarz */
+    text-decoration: none; /* Keine Unterstreichung */
+    position: relative; /* Normale Position innerhalb des Containers */
+    text-align: center; /* Zentriert den Text */
+    margin-top: px; /* Leichter Abstand zwischen Bild und Beschreibung */
+    margin-bottom: 0; /* Kein Abstand nach unten */
+}
+
+/* Beim Hover sichtbar machen */
+.mtproject-item:hover .mtproject-title {
+    opacity: 1; /* Titel sichtbar machen */
+}
+
+.mtproject-item:hover  {
+    opacity: 1; /* Beschreibung sichtbar machen */
+}
+
+.mtproject-link {
+    text-decoration: none; /* Entfernt die Unterstreichung */
+}
+
+/* Bild */
+.mtproject-image {
+    width: 100%; /* Bild füllt den Container aus */
+    aspect-ratio: 1 / 1; /* Erzwingt quadratische Darstellung */
+    object-fit: cover; /* Bild wird gezoomt/beschnitten, um Quadrat zu füllen */
+    display: block; /* Entfernt unerwünschten Inline-Abstand */
+    margin: 0; /* Kein Abstand oben/unten */
+    cursor: pointer; /* Mauszeiger als Hand */
+    position: relative; /* Ermöglicht Überlagerung */
+}
+
+.mtcontent h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.mtcontent h2 a {
+    text-decoration: none; /* Standardmäßig keine Unterstreichung */
+    color: #333; /* Beibehaltung der Farbe */
+}
+
+/* Hover-Effekt für die Links bleibt schwarz */
+.next-links a:hover, .next-rechts a:hover {
+    color: black; /* Farbe bleibt schwarz */
+}
+

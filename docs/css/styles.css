@@ -1,0 +1,409 @@
+/* Für Webkit-basierte Browser (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 0px; /* Versteckt den horizontalen Scrollbalken */
+  height: 0px; /* Versteckt den vertikalen Scrollbalken */
+}
+
+/* Für den restlichen Inhalt (sicherstellen, dass es auf allen Browsern funktioniert) */
+html, body {
+  overflow: scroll; /* Ermöglicht das Scrollen */
+}
+
+
+
+
+
+/* Allgemeine Einstellungen */
+/* Regular 400 */
+@font-face {
+  font-family: "SimplonRegular";
+  src: url("../fonts/simplon-web-files/SimplonMono-Regular-WebS.woff2") format("woff2"),
+       url("../fonts/simplon-web-files/SimplonMono-Regular-WebS.woff") format("woff"); /* optional */
+  font-weight: 400;
+  font-style: regular;
+  font-display: swap;
+}
+
+/* Light 300 */
+@font-face {
+  font-family: "SimplonLight";
+  src: url("../fonts/simplon-web-files/SimplonMono-Light-WebS.woff2") format("woff2"),
+       url("../fonts/simplon-web-files/SimplonMono-Light-WebS.woff") format("woff"); /* optional */
+  font-weight: 300;
+  font-style: light;
+  font-display: swap;
+}
+
+/* Bold 700 */
+@font-face {
+  font-family: "SimplonBold";
+  src: url("../fonts/simplon-web-files/SimplonMono-Bold-WebS") format("woff2"),
+       url("../fonts/meinfont-bold.woff") format("woff"); /* optional */
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+body {
+    font-family: "SimplonLight", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+::selection {
+  background-color: black;
+  color: white;
+}
+
+/* Globaler Link-Reset */
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;        /* oder: color: black; */
+}
+
+
+/* Header */
+header {
+    height: 10px;
+    background-color: #f8f8f8;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Navigation */
+nav {
+    position: fixed;  /* Fixiert die Navbar am oberen Rand */
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+/* Navbar */
+.navbar {
+    display: flex; /* Flexbox für Layout */
+    justify-content: space-between; /* Verteilung der Elemente */
+    align-items: center; /* Vertikale Ausrichtung */
+    background-color: #f8f8f8;
+    color: black;
+    padding:10px 20px;
+    height: 30px; /* Setzt die Höhe der Navbar */
+    background-color: transparent; /* Unsichtbarer Hintergrund */
+    z-index: 11; /* Noch höherer Wert für die Sicherheit */
+}
+
+/* Flex-Container für die gesamte Navbar */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;  /* Hält die rechte Navbar am rechten Rand */
+    align-items: center;  /* Zentriert alle Elemente vertikal */
+}
+
+
+
+
+
+
+
+/* Linker Text */
+.navbar-left {
+    flex: 1; /* Füllt den verfügbaren Platz links */
+    text-align: left;
+    position: relative; /* Ermöglicht die Verwendung von Pseudoelementen */
+}
+
+/* Linker Text: Styling des Links */
+.navbar-left a {
+    text-decoration: none; /* Keine Unterstreichung im normalen Zustand */
+    color: black; /* Textfarbe schwarz */
+    position: relative; /* Ermöglicht die Positionierung des neuen Textes */
+    cursor: pointer; /* Zeigt interaktives Verhalten */
+}
+
+/* Erzeugt neuen Text bei Hover */
+.navbar-left a:hover::after {
+    content: "malte terboven"; /* Neuer Text */
+    position: absolute; /* Positioniert den neuen Text */
+    top: 0;
+    left: 0; /* Gleiche Position wie der ursprüngliche Text */
+    white-space: nowrap; /* Verhindert Zeilenumbruch */
+    color: black; /* Farbe des neuen Textes */
+}
+
+/* Macht den ursprünglichen Text unsichtbar */
+.navbar-left a:hover {
+    color: transparent; /* Der Text mt verschwindet */
+}
+
+
+
+
+
+/* Rechter Text bei großen Bildern */
+.navbar-right {
+    flex: 1; /* Füllt den verfügbaren Platz links */
+    text-align: right;
+    position: relative; /* Ermöglicht die Verwendung von Pseudoelementen */
+}
+
+/* Rechter Text: Styling des Links */
+.navbar-right a {
+    text-decoration: none; /* Keine Unterstreichung im normalen Zustand */
+    color: black; /* Textfarbe schwarz */
+    position: relative; /* Ermöglicht die Positionierung des neuen Textes */
+    cursor: pointer; /* Zeigt interaktives Verhalten */
+}
+
+
+
+
+
+
+
+
+
+/* Burger Menü */
+.burger {
+    flex: 1; /* Nimmt den verbleibenden Platz ein */
+    text-align: right;
+    color: black;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-left: 10px; /* Abstand nach links */
+}
+
+/* Das Symbol (ohne Klammern) */
+.burger::before {
+    content: "+"; /* Nur das "+" Symbol */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Positioniert das "+" Symbol in der Mitte */
+    font-size: 20px; /* Schriftgröße für das Symbol */
+}
+
+/* Minus-Symbol, wenn das Menü geöffnet ist */
+.toggle-checkbox:checked + .burger::before {
+    content: "-"; /* Nur das "-" Symbol */
+}
+
+/* Verstecke das Checkbox-Element */
+.toggle-checkbox {
+    display: none;
+}
+
+/* Menü */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none; /* Standardmäßig ausgeblendet */
+    flex-direction: column;
+    background-color: rgba(248, 248, 248, 0.8); /* Weiß mit Transparenz */
+    position: absolute; /* Absolut positioniert */
+    top: 100%; /* Direkt unter dem Navbar-Bereich */
+    left: 50%; /* Zentrierung relativ zur Breite */
+    transform: translateX(-50%); /* Exakte Zentrierung */
+    width: 100%; /* Breite des Menüs */
+    text-align: center; /* Zentriert den Text im Menü */
+    z-index: 1000; /* Menü wird vor anderen Elementen angezeigt */
+}
+
+.menu li {
+    padding: 10px 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+/* Menü anzeigen, wenn die Checkbox aktiviert ist */
+.toggle-checkbox:checked ~ .menu {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+/* Zentrierter Text */
+.navbar-center {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-grow: 1; 
+    gap: 20px;
+}
+
+#grid a, #scroll a {
+    text-decoration: none; /* Entfernt die Standard-Link-Unterstreichung */
+    color: black; /* Setzt die Textfarbe auf Schwarz */
+    display: flex; /* Stellt sicher, dass Inhalt im Link richtig ausgerichtet ist */
+    align-items: center;
+    gap: 5px; /* Abstand zwischen "X" und dem Text */
+}
+
+#grid a:hover, #scroll a:hover {
+    text-decoration: none; /* Sicherstellen, dass auch beim Hover keine Unterstreichung erscheint */
+    color: black; /* Verhindert Farbänderung beim Hover */
+}
+
+/* Standardmäßig das X ausblenden, aber die Klammern sichtbar lassen */
+.cross {
+    visibility: hidden;
+}
+
+/* Nur auf der aktiven Seite oder beim Hover das X anzeigen */
+#grid.active .cross, 
+#grid a:hover .cross,
+#scroll.active .cross, 
+#scroll a:hover .cross {
+    visibility: visible;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Basislayout für Sticky Footer */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1 0 auto;
+}
+
+
+
+/* === Footer === */
+footer {
+  /* Container Query aktivieren */
+  container-type: inline-size;
+  container-name: footer;
+}
+
+.bottom-navbar {
+  position: relative; /* wichtig für das ::before-Pseudo-Element */
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 22px 18px 36px;
+  line-height: 1.7;
+  color: #000;
+  background: #f8f8f8;
+
+  /* Fallback-Schriftgröße (funktioniert überall) */
+  font-size: clamp(8px, 1vw, 13px);
+  transition: font-size 0.2s ease;
+}
+
+/* Echte runde Punktlinie mit kontrollierbarer Breite + Höhe */
+.bottom-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* Gesamthöhe des Bereichs, in dem die Punkte sitzen */
+  background: repeating-radial-gradient(
+    circle at 0 50%,
+    #000 0 1px,       /* Punktgröße: 1.5px Radius → ergibt 3px Durchmesser */
+    transparent 1px 4px  /* Abstand: alle 12px ein neuer Punkt */
+  );
+  background-size: 12px 1px; /* horizontale & vertikale Wiederholung */
+  background-repeat: repeat-x;
+}
+
+
+
+
+
+
+
+/* Spaltenverhalten */
+.bottom-navbar-left,
+.bottom-navbar-center,
+.bottom-navbar-right {
+  min-width: 0;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.bottom-navbar-left   { justify-self: start;  text-align: left; }
+.bottom-navbar-center { justify-self: center; text-align: center; }
+.bottom-navbar-right  { justify-self: end;    text-align: right; }
+
+.navbar-title {
+  font-weight: bold;
+}
+
+.bottom-navbar a {
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+
+/* === Container-Queries: reagieren auf tatsächliche Footer-Breite === */
+@container footer (max-width: 900px) {
+  .bottom-navbar { font-size: 15px; } 
+}
+
+@container footer (max-width: 700px) {
+  .bottom-navbar { font-size: 13px; gap: 10px; }
+}
+
+@container footer (max-width: 550px) {
+  .bottom-navbar { font-size: 10px; gap: 6px; padding: 16px 8px 24px; } 
+}
+
+@container footer (max-width: 420px) {
+  .bottom-navbar { font-size: 9px; }
+}
+
+

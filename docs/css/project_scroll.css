@@ -1,0 +1,325 @@
+/*Scroll*/
+body.scroll-active menu{
+	margin-bottom: calc(8rem + 1em);
+}
+body.scroll-active #search-tags{
+	color: #a2a2a2;
+	pointer-events: none;
+}
+main.scroll{
+	padding: 0;
+}
+main.scroll .project .trigger,
+/* main.scroll ~ #top, */
+main.scroll ~ footer{
+	display: none !important;
+}
+main:not(.scroll) .project .thumbnail{
+	width: 100% !important;
+	height: auto !important;
+}
+main:not(.scroll) .project .thumbnail img{
+	height: auto !important;
+	background-repeat: no-repeat;
+background-size: contain;
+}
+/*Scroll Wrapper*/
+main:not(.scroll) + #scroll-wrapper{
+	display: none;
+}
+main.scroll + #scroll-wrapper{
+	width: 100vw;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+	right: 0;
+	bottom: 0;
+	overflow-x: hidden;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+	z-index: 8;
+}
+.slide{
+	width: 100vw;
+	height: 50%;
+	position: relative;
+	opacity: 0;
+	z-index: 99;
+	pointer-events: none;
+}
+/* .slide:last-child{
+	height: 300px;
+} */
+/*Projects*/
+main.scroll .project .thumbnail{
+	position: fixed;
+	top: 50% !important;
+	left: 50% !important;
+    width: 100vw;
+	height: 100%;
+	display: flex !important;
+	justify-content: center;
+    align-items: center;
+	transform: translate(-50%, -50%);
+    pointer-events: none;
+	z-index: 1;
+}
+main.scroll .project:not(.active){
+	display: none;
+}
+main.scroll .project.active + .project{
+	display: block;
+}
+main.scroll .project.active .thumbnail{
+	display: flex !important;
+    	z-index: 3 !important;
+}
+main.scroll .project.first:not(.active) .thumbnail,
+main.scroll .project.active + .project .thumbnail{
+	width: 100vw !important;
+	height: 100vh !important;
+	display: flex !important;
+	z-index: 2;
+}
+main.scroll .thumbnail .thumb{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	object-fit: cover;
+}
+main.scroll .project.active + .project .thumbnail .thumb{
+	width: 100vw !important;
+    	height: 100vh !important;
+}
+main.scroll .thumbnail.horizontal .thumb{
+    	height: auto;
+}
+main.scroll .thumbnail.vertical .thumb{
+    	width: auto;
+}
+main.scroll .project.last .thumbnail{
+	width: 100vw !important;
+	height: 100vh !important;
+	display: flex !important;
+	z-index: 1;
+}
+main.scroll .project.last .thumbnail .thumb{
+	width: 100vw !important;
+	height: 100vh !important;
+}
+
+/* main.scroll .thumbnail img,
+main.scroll .thumbnail video{
+	object-fit: cover;
+} */
+/* main.scroll .project:not(.active) .thumb{
+    	width: 100% !important;
+    	height: 100% !important;
+}
+main:not(.scroll) .thumb,
+.last .thumb{
+	width: 100% !important;
+	height: 100% !important;
+} */
+
+main.scroll .project:nth-child(4n + 2) .thumbnail{
+	height: 100vh !important;
+	max-width: 100vw !important;
+	overflow: hidden;
+}
+main.scroll .project:nth-child(4n + 2) .thumbnail .thumb{
+	width: 100vw !important;
+	height: 100vh !important;
+}
+main.scroll .project:nth-child(4n + 4) .thumbnail{
+	width: 100vw !important;
+	max-height: 100vh !important;
+	overflow: hidden;
+}
+main.scroll .project:nth-child(4n + 4) .thumbnail .thumb{
+	width: 100vw !important;
+	height: 100vh !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.scroll-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-image-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease-out, opacity 0.3s ease-out;
+}
+
+.scroll-image-container.inactive {
+    opacity: 0;
+}
+
+.scroll-image-container.active {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 2;
+}
+
+.scroll-image-container.background {
+    transform: scale(1);
+    opacity: 1;
+    z-index: -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.scroll-container {
+    height: calc(100vh - 60px); /* 100% Höhe abzüglich Navbar */
+    margin-top: 30px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s ease-out, opacity 0.3s ease-out;
+}
+
+.image-container.inactive {
+    opacity: 0;
+}
+
+.image-container.active {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 2;
+}
+
+.image-container.background {
+    transform: scale(1);
+    opacity: 1;
+    z-index: -1;
+}
+
+
+
+
+#filterBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;                /* KEIN Umbruch */
+    gap: 20px;
+
+    padding: 10px min(5vw, 40px);     /* dynamischer Seitenabstand */
+    box-sizing: border-box;
+    background: white;
+    z-index: 100;
+
+    font-size: clamp(10px, 1vw, 18px); /* schrumpft stärker bei kleinen Fenstern */
+    white-space: nowrap;              /* kein Zeilenumbruch */
+    overflow: hidden;                 /* Überstände abschneiden */
+}
+
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;            /* Text bleibt in einer Zeile */
+    cursor: pointer;
+    color: black;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none; /* Originale Checkbox ausblenden */
+}
+
+.checkbox-mark::before {
+    content: "[ ]";
+    margin-right: 8px;
+    white-space: pre;
+}
+
+.custom-checkbox input:checked + .checkbox-mark::before {
+    content: "[X]";
+}
+
+
+
+
+
+#mobile-warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #c62828;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+@media screen and (max-width: 600px) {
+  #mobile-warning {
+    display: block;
+  }
+
+  body > *:not(#mobile-warning) {
+    display: none !important;
+  }
+}
+
+
+
