@@ -1,4 +1,10 @@
 /*Scroll*/
+
+#imageContainer {
+    touch-action: none;
+    overscroll-behavior: none;
+}
+
 body.scroll-active menu{
 	margin-bottom: calc(8rem + 1em);
 }
@@ -320,6 +326,3 @@ main.scroll .project:nth-child(4n + 4) .thumbnail .thumb{
     display: none !important;
   }
 }
-
-
-

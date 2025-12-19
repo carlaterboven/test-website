@@ -36,19 +36,23 @@
         <div class="image-title">Concept Diagram</div>
     </div>
 
-    <script src="scripts.js"></script>
-
     <script>
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "ArrowRight") {
-            let nextLink = document.querySelector(".next-rechts a");
-            if (nextLink) window.location.href = nextLink.href;
-        } else if (event.key === "ArrowLeft") {
-            let prevLink = document.querySelector(".next-links a");
-            if (prevLink) window.location.href = prevLink.href;
-        }
-    });
-    </script>
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") {
+        let nextLink = document.querySelector(".next-rechts a");
+        if (nextLink) window.location.href = nextLink.href;
+
+    } else if (event.key === "ArrowLeft") {
+        let prevLink = document.querySelector(".next-links a");
+        if (prevLink) window.location.href = prevLink.href;
+
+    } else if (event.key === "Escape") {
+        // ESC = den gleichen Link ausführen wie der [close]-Button
+        let closeLink = document.querySelector(".navbar-right a");
+        if (closeLink) window.location.href = closeLink.href;
+    }
+});
+</script>
 
 </body>
 </html>

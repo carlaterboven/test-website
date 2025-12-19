@@ -53,8 +53,8 @@ const manageImageList = {
         "coralScraper/pictograms/order-in-disorder.jpg",
         "coralScraper/pictograms/axo.jpg",
         "coralScraper/pictograms/modules.jpg",
-        //"ArtistsDuplex/pictograms/Concept.gif",
-        //"ArtistsDuplex/pictograms/Circle.gif",
+        "ArtistsDuplex/pictograms/Concept.gif",
+        "ArtistsDuplex/pictograms/Circle.gif",
     ],
     elevations: [
         "calmont/elevations/Nordansicht.jpg",

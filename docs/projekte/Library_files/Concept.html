@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malte Terboven</title>
+    <link rel="stylesheet" href="../../css/detail_next.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="icon" href="../../images/favicon_logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Rechter Text -->
+          <span class="navbar-right">
+                <a href="../Library.html">[close]</a>
+            </span>
+        </ul>
+    </header>
+    <!-- Container für das Bild und die Navigation -->
+    <div class="image-container">
+        <nav class="next-navbar">
+            <!-- Linkes Minus-Symbol -->
+            <span class="next-links">
+                <a href="AXO.html">-</a>
+            </span>
+
+            <!-- Rechtes Plus-Symbol -->
+            <span class="next-rechts">
+                <a href="Floor_Plate.html">+</a>
+            </span>
+        </nav>
+
+        <!-- Bild, das sich an die Größe des Bildschirms anpasst -->
+        <img src="../../images/Library/pictograms/Concept.gif" alt="Drawing 2" class="large-image">
+        <div class="image-title">Concept Diagram</div>
+    </div>
+
+    <script src="scripts.js"></script>
+    
+    <script>
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") {
+        let nextLink = document.querySelector(".next-rechts a");
+        if (nextLink) window.location.href = nextLink.href;
+
+    } else if (event.key === "ArrowLeft") {
+        let prevLink = document.querySelector(".next-links a");
+        if (prevLink) window.location.href = prevLink.href;
+
+    } else if (event.key === "Escape") {
+        // ESC = den gleichen Link ausführen wie der [close]-Button
+        let closeLink = document.querySelector(".navbar-right a");
+        if (closeLink) window.location.href = closeLink.href;
+    }
+});
+</script>
+
+</body>
+</html>
