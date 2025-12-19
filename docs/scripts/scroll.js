@@ -1,9 +1,15 @@
 
 const container = document.getElementById("imageContainer");
 const checkboxes = document.querySelectorAll("#filterBar input[type='checkbox']");
-
 const imageList = manageImageList;
+
 let images = [];
+let currentIndex = 0;
+let scrollPosition = 0;
+
+let scalingValue = 1; // Anfangsskalierung (Vollbild)
+const maxScale = 0.02; // Minimale Größe des Bildes beim Verkleinern
+const maxScrollPosition = (maxScale + 1) * 1000
 
 // Funktion: kombiniere ausgewählte Kategorien
 function updateImageList() {
@@ -29,6 +35,17 @@ function updateImageList() {
     });
 
     images = document.querySelectorAll('.image-container');
+
+    // nicht alle Bilder sind von Anfang an im Hintergrund sichtbar
+    images.forEach((image, index) => {
+        if (index == currentIndex) {
+            image.classList.add('active');
+        } else if (index == currentIndex +1) {
+            image.classList.add('background');
+        } else {
+            image.classList.add('inactive');
+        }
+    });
 }
 
 // Event Listener für Änderungen
@@ -36,23 +53,6 @@ checkboxes.forEach(cb => cb.addEventListener("change", updateImageList));
 
 // Initialer Aufruf
 updateImageList();
-
-let currentIndex = 0;
-let scrollPosition = 0;
-let scalingValue = 1; // Anfangsskalierung (Vollbild)
-const maxScale = 0.02; // Minimale Größe des Bildes beim Verkleinern
-const maxScrollPosition = (maxScale + 1) * 1000
-
-// nicht alle Bilder sind von Anfang an im Hintergrund sichtbar
-images.forEach((image, index) => {
-    if (index == currentIndex) {
-        image.classList.add('active');
-    } else if (index == currentIndex +1) {
-        image.classList.add('background');
-    } else {
-        image.classList.add('inactive');
-    }
-});
 
 
 function handleScroll(delta) {
@@ -97,38 +97,73 @@ function handleScroll(delta) {
     }
 }
 
+let isPointerDown = false;
+let lastY = 0;
+let lastTime = 0;
+let velocity = 0;
+let momentumId = null;
+
+
 window.addEventListener("wheel", (e) => {
     handleScroll(e.deltaY);
 }, { passive: true });
 
-let isPointerDown = false;
-let lastY = 0;
 
-container.addEventListener("pointerdown", (e) => {
+function startMomentum() {
+    isPointerDown = false;
+
+    if (Math.abs(velocity) < 0.01) return;
+
+    const friction = 0.95;   // 0.90 = kurz, 0.97 = sehr lang
+    const multiplier = 16;  // höher = stärkerer Schwung
+
+    function step() {
+        velocity *= friction;
+        handleScroll(velocity * multiplier);
+
+        if (Math.abs(velocity) > 0.002) {
+            momentumId = requestAnimationFrame(step);
+        } else {
+            velocity = 0;
+            momentumId = null;
+        }
+    }
+
+    step();
+}
+
+
+container.addEventListener("pointerdown", e => {
     isPointerDown = true;
     lastY = e.clientY;
+    lastTime = performance.now();
+    velocity = 0;
+
+    if (momentumId) {
+        cancelAnimationFrame(momentumId);
+        momentumId = null;
+    }
+
     container.setPointerCapture(e.pointerId);
 });
 
-container.addEventListener("pointermove", (e) => {
+container.addEventListener("pointermove", e => {
     if (!isPointerDown) return;
-
-    // Maus: nur wenn gedrückt
     if (e.pointerType === "mouse" && e.buttons !== 1) return;
 
-    let delta = lastY - e.clientY;
-    lastY = e.clientY;
+    const now = performance.now();
+    const dy = lastY - e.clientY;
+    const dt = now - lastTime || 16;
 
-    // kleine Dämpfung (optional, aber empfohlen)
-    delta = Math.max(-50, Math.min(50, delta));
+    lastY = e.clientY;
+    lastTime = now;
+
+    const delta = Math.max(-60, Math.min(60, dy));
 
     handleScroll(delta);
+
+    velocity = delta / dt;
 });
 
-container.addEventListener("pointerup", () => {
-    isPointerDown = false;
-});
-
-container.addEventListener("pointercancel", () => {
-    isPointerDown = false;
-});
+container.addEventListener("pointerup", startMomentum);
+container.addEventListener("pointercancel", startMomentum);
